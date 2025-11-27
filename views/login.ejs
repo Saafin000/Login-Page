@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Login</title>
-  <link rel="stylesheet" href="/styles.css" />
-</head>
-<body>
-  <div class="container">
-    <h2>Welcome Back</h2>
-    <form action="/login" method="POST">
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="/register">Register here</a></p>
-  </div>
-</body>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="flash-area">
+        <% if (success_msg.length > 0) { %>
+        <div class="alert success"><%= success_msg %></div>
+        <% } %> <% if (error_msg.length > 0) { %>
+        <div class="alert error"><%= error_msg %></div>
+        <% } %> <% if (error.length > 0) { %>
+        <div class="alert error"><%= error %></div>
+        <% } %>
+      </div>
+      <h2>Login</h2>
+
+      <form action="/login" method="POST">
+        <input type="email" name="email" placeholder="Email" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      <a class="google-btn" href="/auth/google">Login With Google</a>
+
+      <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+  </body>
 </html>
